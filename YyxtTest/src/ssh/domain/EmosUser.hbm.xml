@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ssh.domain">
+<class name="EmosUser" table="taw_system_user">
+	<id name="ID" type="string" column="ID">
+	</id>
+	<property name="CPTROOMID" type="string" column="CPTROOMID" />
+	<property name="CPTROOMNAME" type="string" column="CPTROOMNAME" />
+	<property name="DEPTID" type="string" column="DEPTID" />
+	<property name="DEPTNAME" type="string" column="DEPTNAME" />
+	<property name="EMAIL" type="string" column="EMAIL" />
+    <property name="FAMILYADDRESS" type="string" column="FAMILYADDRESS"/>
+    <property name="FAX" type="string" column="FAX"/>
+    <property name="MOBILE" type="string" column="MOBILE"/>
+    <property name="OPERUSERID" type="string" column="OPERUSERID"/>
+    <property name="PHONE" type="string" column="PHONE"/>
+    <property name="REMARK" type="string" column="REMARK"/>
+    <property name="SEX" type="string" column="SEX"/>
+    <property name="USERDEGREE" type="string" column="USERDEGREE"/>
+    <property name="USERID" type="string" column="USERID"/>
+    <property name="USERNAME" type="string" column="USERNAME"/>
+    <property name="OPERREMOTIP" type="string" column="OPERREMOTIP"/>
+    <property name="SAVETIME" type="timestamp" column="SAVETIME"/>
+    <property name="UPDATETIME" type="timestamp" column="UPDATETIME"/>
+    <property name="ACCOUNT_ENABLED" type="string" column="ACCOUNT_ENABLED"/>
+    <property name="ACCOUNT_EXPIRED" type="string" column="ACCOUNT_EXPIRED"/>
+    <property name="ACCOUNT_LOCKED" type="string" column="ACCOUNT_LOCKED"/>
+    <property name="CREDENTIALS_EXPIRED" type="string" column="CREDENTIALS_EXPIRED"/>
+    <property name="PASSWORD" type="string" column="PASSWORD"/>
+    <property name="POSTAL_CODE" type="string" column="POSTAL_CODE"/>
+    <property name="DELETED" type="integer" column="DELETED"/>
+    <property name="ISFULLEMPLOY" type="string" column="ISFULLEMPLOY"/>
+    <property name="ISREST" type="string" column="ISREST"/>
+    <property name="USERSTATUS" type="string" column="USERSTATUS"/>
+    <property name="PORTALROLENAME" type="string" column="PORTALROLENAME"/>
+    <property name="FLAG" type="integer" column="FLAG"/>
+    <property name="FAIL_COUNT" type="integer" column="FAIL_COUNT"/>
+    <property name="ISPARTNERS" type="string" column="ISPARTNERS"/>
+</class>
+</hibernate-mapping>

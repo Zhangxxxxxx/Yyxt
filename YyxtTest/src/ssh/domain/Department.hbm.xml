@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ssh.domain">
+<class name="Department" table="a_department">
+	<id name="id" type="integer" column="id">
+	     
+	</id>
+	<property name="deleted" type="integer" column="deleted"/>
+	<property name="deptemail"  type="string" column="deptemail"/>
+	<property name="deptfax"  type="string" column="deptfax"/>
+	<property name="deptid"  type="string" column="deptid"/>
+	<property name="deptmanager"  type="string" column="deptmanager"/>
+	<property name="deptmobile"  type="string" column="deptmobile"/>
+	<property name="deptname"  type="string" column="deptname"/>
+	<property name="deptphone"  type="string" column="deptphone"/>
+	<property name="depttype"  type="string" column="depttype"/>
+	<property name="areaid"  type="string" column="areaid"/>
+	<property name="linkid"  type="string" column="linkid"/>
+	<property name="parentlinkid"  type="string" column="parentlinkid"/>
+	<property name="tmpdeptid"  type="string" column="tmpdeptid"/>
+	<property name="ispartners"  type="string" column="ispartners"/>
+	<property name="isdaiweiroot"  type="string" column="isdaiweiroot"/>
+	<property name="parentdeptid"  type="string" column="parentdeptid"/>
+	<property name="remark"  type="string" column="remark"/>
+</class>
+</hibernate-mapping>
