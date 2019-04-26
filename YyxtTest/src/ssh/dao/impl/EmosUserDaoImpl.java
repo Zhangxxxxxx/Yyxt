@@ -27,6 +27,16 @@ public class EmosUserDaoImpl extends HibernateDaoSupport implements IEmosUserDao
 		
 		return userlist;
 	}
+
+	@Override
+	public List<EmosUser> allemployee() {
+		// TODO Auto-generated method stub
+		String hql = "from EmosUser user where 1 = 1";
+		
+		List<EmosUser> userlist = this.getHibernateTemplate().find(hql);
+		
+		return userlist;
+	}
 	
 	
 }

@@ -26,6 +26,15 @@ public class EmosUserServiceImpl implements IEmosUserService {
 		return userlist;
 	}
 
+
+	@Override
+	public List<EmosUser> allemployee() {
+		
+		List<EmosUser> userlist = emosUserDao.allemployee();
+		
+		return userlist;
+	}
+
 	
 
 }

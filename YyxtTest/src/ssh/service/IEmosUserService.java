@@ -11,4 +11,6 @@ public interface IEmosUserService {
 
 	List<EmosUser> userByDeptId(String deptid);
 
+	List<EmosUser> allemployee();
+
 }

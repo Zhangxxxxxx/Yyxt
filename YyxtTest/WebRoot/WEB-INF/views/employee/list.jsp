@@ -135,7 +135,7 @@
 	<div id="light" class="white_content">
 		<div id="Departmentlist">
 			<ul id="browser" class="filetree treeview-famfamfam">
-				<li><span class="folder">所有部门</span>
+				<li class="closed"><span class="folder">所有部门</span>
 					<ul>
 						<s:if test="#twoDepartment!=null && #twoDepartment.size()>0">
 							<s:iterator value="#twoDepartment" var="twoDepartment">
@@ -175,6 +175,8 @@
 							</s:iterator>
 						</s:if>
 					</ul>
+					</li>
+				</ul>
 		</div>
 
 	</div>
