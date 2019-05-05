@@ -77,6 +77,16 @@ public class DepartmentServiceImpl implements IDepartmentService {
 			return delectconditon;
 		}
 
+		/**
+		 *根据deptid删除该部门
+		 */
+		@Override
+		public String deleteDepartmentByDeptid(String id) {
+			
+			String delectconditon = departmentDao.deleteDepbyDeptid(id);
+			return delectconditon;
+		}
+
 	
 
 }

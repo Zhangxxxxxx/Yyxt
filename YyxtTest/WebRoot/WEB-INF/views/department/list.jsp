@@ -342,16 +342,6 @@
 											style="width: 150px;">
 									</div>
 								</div>
-								<!-- <div class="x-form-clear-left"></div>
-								<div class="x-form-item ">
-									<label for="areaid" style="width: auto;">地市:</label>
-									<div class="x-form-element" id="x-form-el-areaid"
-										style="padding-left: 0;">
-										<input type="text" size="20" autocomplete="off" id="areaid"
-											name="areaid" class=" x-form-text x-form-field" readonly=""
-											style="width: 150px;">
-									</div>
-								</div> -->
 								<div class="x-form-clear-left"></div>
 								<div class="x-form-item ">
 									<label for="remark" style="width: auto;">备注:</label>

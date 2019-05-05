@@ -20,4 +20,6 @@ public interface IDepartmentService {
 
 	String deleteDepartment(int id);
 
+	String deleteDepartmentByDeptid(String id);
+
 }

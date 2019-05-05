@@ -92,6 +92,26 @@ public class DepartmentDaoImpl extends HibernateDaoSupport implements IDepartmen
 		
 		return delectconditon;
 	}
+	
+	/**根据id删除部门，就是改变部门的deleted状态*/
+	@Override
+	public String deleteDepbyDeptid(String id) {
+		// TODO Auto-generated method stub
+		String hql = "update Department dep set dep.deleted ='1' where dep.deptid ="+id;
+		Session session = this.getSession();
+		session.createQuery(hql).executeUpdate();
+		
+		String delectconditon ="";
+		//根据id查询出部门对象，并获得deleted标志看是否改变为1，若改变则说明删除成功
+		int delected = findDepDetail(id).getDeleted();
+		if(delected==1){
+			delectconditon="success";
+		}else {
+			delectconditon="fail";
+		}
+		
+		return delectconditon;
+	}
 
 	/*
 	 *根据id查询出部门对象 

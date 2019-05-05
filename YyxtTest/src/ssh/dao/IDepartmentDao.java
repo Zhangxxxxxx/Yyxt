@@ -23,4 +23,6 @@ public interface IDepartmentDao {
 
 	String deleteDep(int id);
 
+	String deleteDepbyDeptid(String id);
+
 }

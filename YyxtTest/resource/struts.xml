@@ -81,6 +81,9 @@
 		<action name="emosUserAction_*" class="emosUserAction" method="{1}">
 			<result name="userlist">WEB-INF/views/employee/list.jsp</result>
 			<result name="employeelist">WEB-INF/views/employee/role.jsp</result>
+			<result name="updatedeporuser" type="redirectAction">
+				<param name="actionName">emosUserAction_employeelist.action</param>
+			</result>
 		</action>
 		
 	</package>

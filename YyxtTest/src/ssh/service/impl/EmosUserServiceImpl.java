@@ -35,6 +35,32 @@ public class EmosUserServiceImpl implements IEmosUserService {
 		return userlist;
 	}
 
+
+	@Override
+	public String deleteUser(String id) {
+		String  user = emosUserDao.deleteUserid(id);
+		
+		return user;
+	}
+
+
+	@Override
+	public List<EmosUser> userByUserID(String id) {
+		// TODO Auto-generated method stub
+		List<EmosUser> userList = emosUserDao.userByUserId(id);
+		
+		return userList;
+	}
+
+
+	@Override
+	public String saveeditDepartment(EmosUser emosuser) {
+		//编辑成功与否
+		String registercondition = emosUserDao.saveDepartment(emosuser);
+						
+		return registercondition;
+	}
+
 	
 
 }
