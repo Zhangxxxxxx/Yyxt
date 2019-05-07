@@ -29,4 +29,10 @@
 		<property name="departmentService" ref="departmentService"></property>
 		<property name="emosUserService" ref="emosUserService"></property>
 	</bean>
+	<bean id="areaAction" class="ssh.web.action.AreaAction" scope="prototype">
+		<property name="areaService" ref="areaService"></property>
+	</bean>
+	<bean id="dicttypeAction" class="ssh.web.action.DicttypeAction" scope="prototype">
+		<property name="dicttypeService" ref="dicttypeService"></property>
+	</bean>
 </beans>

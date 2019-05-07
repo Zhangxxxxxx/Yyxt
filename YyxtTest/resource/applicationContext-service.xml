@@ -33,4 +33,10 @@
 	<bean id="emosUserService" class="ssh.service.impl.EmosUserServiceImpl">
 		<property name="emosUserDao" ref="emosUserDao"></property>
 	</bean>
+	<bean id="areaService" class="ssh.service.impl.AreaServiceImpl">
+		<property name="areaDao" ref="areaDao"></property>
+	</bean>
+	<bean id="dicttypeService" class="ssh.service.impl.DicttypeServiceImpl">
+		<property name="dicttypeDao" ref="dicttypeDao"></property>
+	</bean>
 </beans>

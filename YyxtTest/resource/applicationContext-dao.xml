@@ -23,4 +23,10 @@
 	
 	<bean id="emosUserDao" class="ssh.dao.impl.EmosUserDaoImpl" parent="baseDao">
 	</bean>
+	
+	<bean id="areaDao" class="ssh.dao.impl.AreaDaoImpl" parent="baseDao">
+	</bean>
+	
+	<bean id="dicttypeDao" class="ssh.dao.impl.DicttypeDaoImpl" parent="baseDao">
+	</bean>
 </beans>

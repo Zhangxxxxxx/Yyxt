@@ -2,6 +2,7 @@ package ssh.domain;
 
 import java.util.List;
 
+/*ztree的模型，id，name，父类id就是pid*/
 public class JsonDepartment {
 	
 	private String id;

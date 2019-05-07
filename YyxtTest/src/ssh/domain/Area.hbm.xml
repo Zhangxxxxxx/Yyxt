@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ssh.domain">
+<class name="Area" table="taw_system_area">
+	<id name="id" type="string" column="id">
+	</id>
+	<property name="areaid" type="string" column="areaid"/>
+	<property name="areaname"  type="string" column="areaname"/>
+	<property name="leaf" type="string" column="leaf"/>
+	<property name="remark" type="string" column="remark"/>
+	<property name="parentareaid" type="string" column="parentareaid"/>
+	<property name="ordercode" type="integer" column="ordercode"/>
+	<property name="areacode" type="string" column="areacode"/>
+	<property name="capital" type="string" column="capital"/>
+	<property name="citymanagername" type="string" column="citymanagername"/>
+	<property name="citymanagerid" type="string" column="citymanagerid"/>
+</class>
+</hibernate-mapping>

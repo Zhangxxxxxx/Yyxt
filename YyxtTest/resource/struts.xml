@@ -86,5 +86,19 @@
 			</result>
 		</action>
 		
+		<action name="areaAction_*" class="areaAction" method="{1}">
+			<result name="arealist">WEB-INF/views/area/arealist.jsp</result>
+			<result name="updatedarea" type="redirectAction">
+				<param name="actionName">areaAction_arealist.action</param>
+			</result>
+		</action>
+		
+		<action name="dicttypeAction_*" class="dicttypeAction" method="{1}">
+			<result name="dictlist">WEB-INF/views/dicttype/dictlist.jsp</result>
+			<result name="updateddict" type="redirectAction">
+				<param name="actionName">dicttypeAction_dictlist.action</param>
+			</result>
+		</action>
+		
 	</package>
 </struts>
