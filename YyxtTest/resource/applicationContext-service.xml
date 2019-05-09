@@ -39,4 +39,7 @@
 	<bean id="dicttypeService" class="ssh.service.impl.DicttypeServiceImpl">
 		<property name="dicttypeDao" ref="dicttypeDao"></property>
 	</bean>
+	<bean id="cptRoomService" class="ssh.service.impl.CptRoomServiceImpl">
+		<property name="cptRoomDao" ref="cptRoomDao"></property>
+	</bean>
 </beans>

@@ -35,4 +35,7 @@
 	<bean id="dicttypeAction" class="ssh.web.action.DicttypeAction" scope="prototype">
 		<property name="dicttypeService" ref="dicttypeService"></property>
 	</bean>
+	<bean id="cptRoomAction" class="ssh.web.action.CptRoomAction" scope="prototype">
+		<property name="cptRoomService" ref="cptRoomService"></property>
+	</bean>
 </beans>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>字典管理</title>
+<title>机房管理</title>
 <%@ include file="/js/commons.jspf"%>
 
 <link type="text/css" rel="stylesheet"
@@ -77,7 +77,6 @@
 					}   
 			  }  
 			
-			
 		}
 	}
 	
@@ -85,15 +84,16 @@
 		if (type == -1) {
 			$(".dropdown-menu").find("li:not(:first)").hide();
 		} else if (leaf) {
-			$(".dropdown-menu").find("li:first").hide();
+			$(".dropdown-menu").find("li:first").show();
+			var datanamelist =
+			"<li data-toggle='modal' data-target='#exampleModal1' onclick='addarea(this)'><a><i class='fa fa-plus'></i>&nbsp;新建机房</a></li>"
+			$(".dropdown-menu").html(datanamelist); 
 		} else {
 			$(".dropdown-menu").find("li").show();
 				var datanamelist =
 					"<li data-toggle='modal' data-target='#exampleModal1' onclick='editer(this)'><a><i class='fa fa-edit'></i>&nbsp;修改</a></li>"+
 					"<li class='divider'></li>"+
-					"<li data-toggle='modal' data-target='#exampleModal2' onclick='addarea(this)'><a><i class='fa fa-plus'></i>&nbsp;新建下级字典项 </a></li>"+
-					"<li class='divider'></li>"+
-					"<li data-toggle='modal' data-target='#exampleModal3' onclick='deletedept(this)'><a><i class='fa fa-trash'></i>&nbsp;删除这个字典项 </a></li>"	
+					"<li data-toggle='modal' data-target='#exampleModal3' onclick='deletedept(this)'><a><i class='fa fa-trash'></i>&nbsp;删除 </a></li>"	
 				$(".dropdown-menu").html(datanamelist); 
 		}
 		$("#treeContextMenu").css({
@@ -135,19 +135,20 @@
 		$.ajax({
 			
 			type:"post",
-			url:"dicttypeAction_dictByDictId.action",//需要用来处理ajax请求的action,excuteAjax为处理的方法名，JsonAction为action名
+			url:"cptRoomAction_cptRoomById.action",//需要用来处理ajax请求的action,excuteAjax为处理的方法名，JsonAction为action名
 			data:{
 				//设置数据源
-				"dictid":id,
+				"id":id,
 			},
 			dataType:"json",//设置需要返回的数据类型
 			success:function(data){
 				$(data).each(function(){
 					 //alert(this.parentareaid);
-					 $("#dictid").val(this.dictid);
-					 $("#dictcode").val(this.dictcode); 
-					 $("#dictremark").val(this.dictremark);
-					 
+					 $("#id").val(id);
+					 $("#address").val(this.address);
+					 $("#phone").val(this.phone); 
+					 $("#moblie").val(this.mobile);
+					 $("#notes").val(this.notes);
 					 
 				});
 				
@@ -172,13 +173,13 @@
 		//传递要删除的deptid或者userid
 		var id= $("#deptorempid").val();
 		//alert(id);
-		location.href = "dicttypeAction_deletedarea.action?dictid="+id;
+		location.href = "cptRoomAction_deletedcptroom.action?id="+id;
 	}
 	
 	function addsave_area(o) {
 		var name =$("#adddictname").val();
 		if (name == "" || name == null) {
-			alert("字典名称不能为空！");
+			alert("机房名称不能为空！");
 			return false;
 			}
 		 else { 
@@ -191,7 +192,7 @@
 	function saveediter_area(o) {
 		var name =$("input[name='dictname']").val();
 		if (name == "" || name == null) {
-			alert("字典名称不能为空！");
+			alert("机房名称不能为空！");
 			return false;
 			}
 		 else { 
@@ -208,7 +209,7 @@
 	<div id="light" class="white_content">
 		<div id="Arealist">
 			<input type="hidden" name="emlist" id="emlist"
-				value="<s:property value="dictlist"/>" />
+				value="<s:property value="cptroomlist"/>" />
 			<div id="treeDemo" class="ztree"></div>
 
 			<div class="dropdown open" id="treeContextMenu"
@@ -230,18 +231,18 @@
 							aria-label="Close">
 							<span aria-hidden="true">×</span>
 						</button>
-						<h4 class="modal-title" id="exampleModalLabel">编辑字典</h4>
+						<h4 class="modal-title" id="exampleModalLabel">编辑机房</h4>
 					</div>
 					<div class="modal-body">
 						<form id="saveareaform" role="form"
 							action="dicttypeAction_saveediterdict" method="post">
 							<div id="left">
 
-								<input type="hidden" size="20" autocomplete="off" id="dictid"
-									name="dictid" class=" x-form-text x-form-field"
+								<input type="text" size="20" autocomplete="off" id="id"
+									name="id" class=" x-form-text x-form-field"
 									style="width: 150px;" readonly="">
 								<div class="x-form-item ">
-									<label for="ext-comp-1001" style="width: auto;">字典类型名称:</label>
+									<label for="ext-comp-1001" style="width: auto;">机房名称:</label>
 									<div class="x-form-element" id="x-form-el-ext-comp-1001"
 										style="padding-left: 0;">
 										<input type="text" size="20" autocomplete="off" id="dictname"
@@ -251,22 +252,66 @@
 								</div>
 								<div class="x-form-clear-left"></div>
 								<div class="x-form-item ">
-									<label for="ext-comp-1007" style="width: auto;">字典类型值:</label>
+									<label for="ext-comp-1007" style="width: auto;">机房地址:</label>
 									<div class="x-form-element" id="x-form-el-ext-comp-1007"
 										style="padding-left: 0;">
-										<input type="text" size="20" autocomplete="off" id="dictcode"
-											name="dictcode" class=" x-form-text x-form-field"
+										<input type="text" size="20" autocomplete="off" id="address"
+											name="address" class=" x-form-text x-form-field"
 											style="width: 150px;">
 									</div>
 								</div>
 								<div class="x-form-clear-left"></div>
 								<div class="x-form-item ">
-									<label for="remark" style="width: auto;">字典类型备注:</label>
+									<label for="remark" style="width: auto;">所属部门:</label>
 									<div class="x-form-element" id="x-form-el-remark"
 										style="padding-left: 0;">
 										<textarea
 											style="width: 150px; height: 60px; overflow: hidden;"
 											autocomplete="off" id="dictremark" name="dictremark"
+											class=" x-form-textarea x-form-field"></textarea>
+									</div>
+								</div>
+								<div class="x-form-clear-left"></div>
+								<div class="x-form-item ">
+									<label for="remark" style="width: auto;">联系电话:</label>
+									<div class="x-form-element" id="x-form-el-remark"
+										style="padding-left: 0;">
+										<textarea
+											style="width: 150px; height: 60px; overflow: hidden;"
+											autocomplete="off" id="phone" name="phone"
+											class=" x-form-textarea x-form-field"></textarea>
+									</div>
+								</div>
+								<div class="x-form-clear-left"></div>
+								<div class="x-form-item ">
+									<label for="remark" style="width: auto;">联系手机:</label>
+									<div class="x-form-element" id="x-form-el-remark"
+										style="padding-left: 0;">
+										<textarea
+											style="width: 150px; height: 60px; overflow: hidden;"
+											autocomplete="off" id="mobile" name="mobile"
+											class=" x-form-textarea x-form-field"></textarea>
+									</div>
+								</div>
+								<div class="x-form-clear-left"></div>
+								<div class="x-form-item ">
+									<label for="remark" style="width: auto;">联系传真:</label>
+									<div class="x-form-element" id="x-form-el-remark"
+										style="padding-left: 0;">
+										<textarea
+											style="width: 150px; height: 60px; overflow: hidden;"
+											autocomplete="off" id="dictremark" name="dictremark"
+											class=" x-form-textarea x-form-field"></textarea>
+									</div>
+								</div>
+								<div class="x-form-clear-left"></div>
+								<div class="x-form-item ">
+									<label for="remark" style="width: auto;">注释:</label>
+									<div class="x-form-element" id="x-form-el-remark"
+										style="padding-left: 0;">
+										<textarea
+											style="width: 150px; height: 60px; overflow: hidden;"
+											autocomplete="off" id="notes" name="notes"
 											class=" x-form-textarea x-form-field"></textarea>
 									</div>
 								</div>
@@ -294,19 +339,19 @@
 								aria-label="Close">
 								<span aria-hidden="true">×</span>
 							</button>
-							<h4 class="modal-title" id="exampleModalLabel">新建下级字典</h4>
+							<h4 class="modal-title" id="exampleModalLabel">新建机房</h4>
 						</div>
 						<div class="modal-body">
 							<form id="addareaform" role="form"
 								action="dicttypeAction_adddict.action" method="post">
 								<div id="left">
 
-									<input type="hidden" size="20" autocomplete="off"
+									<input type="text" size="20" autocomplete="off"
 										id="parentdictid" name="parentdictid"
 										class=" x-form-text x-form-field" style="width: 150px;"
 										readonly="">
 									<div class="x-form-item ">
-										<label for="ext-comp-1001" style="width: auto;">字典类型名称:</label>
+										<label for="ext-comp-1001" style="width: auto;">机房名称:</label>
 										<div class="x-form-element" id="x-form-el-ext-comp-1001"
 											style="padding-left: 0;">
 											<input type="text" size="20" autocomplete="off" id="adddictname"
@@ -316,7 +361,7 @@
 									</div>
 
 									<div class="x-form-item ">
-										<label for="deptmanager" style="width: auto;">字典类型值:</label>
+										<label for="deptmanager" style="width: auto;">机房地址:</label>
 										<div class="x-form-element" id="x-form-el-ext-comp-1002"
 											style="padding-left: 0;">
 											<input type="text" size="20" autocomplete="off" id="dictcode"
@@ -326,7 +371,55 @@
 
 										<div class="x-form-clear-left"></div>
 										<div class="x-form-item ">
-											<label for="remark" style="width: auto;">字典类型备注:</label>
+											<label for="remark" style="width: auto;">所属部门:</label>
+											<div class="x-form-element" id="x-form-el-remark"
+												style="padding-left: 0;">
+												<textarea
+													style="width: 150px; height: 60px; overflow: hidden;"
+													autocomplete="off" id="dictremark" name="dictremark"
+													class=" x-form-textarea x-form-field"></textarea>
+											</div>
+										</div>
+										
+										<div class="x-form-clear-left"></div>
+										<div class="x-form-item ">
+											<label for="remark" style="width: auto;">联系电话:</label>
+											<div class="x-form-element" id="x-form-el-remark"
+												style="padding-left: 0;">
+												<textarea
+													style="width: 150px; height: 60px; overflow: hidden;"
+													autocomplete="off" id="dictremark" name="dictremark"
+													class=" x-form-textarea x-form-field"></textarea>
+											</div>
+										</div>
+										
+										<div class="x-form-clear-left"></div>
+										<div class="x-form-item ">
+											<label for="remark" style="width: auto;">联系手机:</label>
+											<div class="x-form-element" id="x-form-el-remark"
+												style="padding-left: 0;">
+												<textarea
+													style="width: 150px; height: 60px; overflow: hidden;"
+													autocomplete="off" id="dictremark" name="dictremark"
+													class=" x-form-textarea x-form-field"></textarea>
+											</div>
+										</div>
+										
+										<div class="x-form-clear-left"></div>
+										<div class="x-form-item ">
+											<label for="remark" style="width: auto;">联系传真:</label>
+											<div class="x-form-element" id="x-form-el-remark"
+												style="padding-left: 0;">
+												<textarea
+													style="width: 150px; height: 60px; overflow: hidden;"
+													autocomplete="off" id="dictremark" name="dictremark"
+													class=" x-form-textarea x-form-field"></textarea>
+											</div>
+										</div>
+										
+										<div class="x-form-clear-left"></div>
+										<div class="x-form-item ">
+											<label for="remark" style="width: auto;">注释:</label>
 											<div class="x-form-element" id="x-form-el-remark"
 												style="padding-left: 0;">
 												<textarea

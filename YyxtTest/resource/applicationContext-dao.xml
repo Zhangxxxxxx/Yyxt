@@ -29,4 +29,7 @@
 	
 	<bean id="dicttypeDao" class="ssh.dao.impl.DicttypeDaoImpl" parent="baseDao">
 	</bean>
+	
+	<bean id="cptRoomDao" class="ssh.dao.impl.CptRoomDaoImpl" parent="baseDao">
+	</bean>
 </beans>

@@ -58,7 +58,7 @@
                   {id:'department',text:'部门管理', href:'departmentAction_departmentlist.action'},
                   {id:'local',text:'地域管理', href:'areaAction_arealist.action'},
                   {id:'dictionary',text:'字典管理', href:'dicttypeAction_dictlist.action'},
-                  {id:'machineroom',text:'机房管理', href:''},
+                  {id:'machineroom',text:'机房管理', href:'cptRoomAction_cptroomlist.action'},
                 ]
               }]
           },{

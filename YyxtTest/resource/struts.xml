@@ -100,5 +100,11 @@
 			</result>
 		</action>
 		
+		<action name="cptRoomAction_*" class="cptRoomAction" method="{1}">
+			<result name="cptroomlist">WEB-INF/views/cptroom/cptroomlist.jsp</result>
+			<result name="updatedcptroom" type="redirectAction">
+				<param name="actionName">cptRoomAction_cptroomlist.action</param>
+			</result>
+		</action>
 	</package>
 </struts>

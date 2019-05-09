@@ -193,11 +193,10 @@
 	}
 	
 	function addsave_employee(o) {
-		var name =$("input[name='empname']").val();
-		var id =$("input[name='userid']").val();
+		var name =$("input[name='addempname']").val();
+		var id =$("input[name='adduserid']").val();
 		var username = document.getElementById("empname").value;
-		//alert(username);
-		//alert(id);
+		alert(name);
 		if (name == "" || name == null) {
 			alert("用户名称不能为空！");
 			return false;
@@ -394,8 +393,8 @@
 									<label for="ext-comp-1001" style="width: auto;">用户名称:</label>
 									<div class="x-form-element" id="x-form-el-ext-comp-1001"
 										style="padding-left: 0;">
-										<input type="text" size="20" autocomplete="off" id="empname"
-											name="empname" value="" class=" x-form-text x-form-field "
+										<input type="text" size="20" autocomplete="off" id="username"
+											name="addempname" value="" class=" x-form-text x-form-field "
 											placeholder="名称不能为空" style="width: 150px;">
 									</div>
 								</div>
@@ -405,7 +404,7 @@
 									<div class="x-form-element" id="x-form-el-ext-comp-1002"
 										style="padding-left: 0;">
 										<input type="text" size="20" autocomplete="off"
-											id="userid" name="userid""
+											id="userid" name="adduserid""
 											class=" x-form-text x-form-field" style="width: 150px;"
 											placeholder="ID不能为空">
 									</div>
@@ -417,7 +416,7 @@
 											style="padding-left: 0;">
 											<input type="text" size="20" autocomplete="off"
 												id="belongdept" name="belongdept"
-												class=" x-form-text x-form-field" style="width: 150px;">
+												class=" x-form-text x-form-field" style="width: 150px;" readonly="">
 										</div>
 									</div>
 
