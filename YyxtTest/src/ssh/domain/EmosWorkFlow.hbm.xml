@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ssh.domain">
+<class name="EmosWorkFlow" table="taw_system_workflow">
+	<id name="id" type="string" column="id">
+	</id>
+	<property name="name" type="string" column="name"/>
+	<property name="flowid"  type="string" column="flowid"/>
+	<property name="sheetid" type="string" column="sheetid"/>
+	<property name="remark" type="string" column="remark"/>
+	<property name="mainservicebeanid" type="string" column="mainservicebeanid"/>
+	<property name="roleid" type="string" column="roleid"/>
+</class>
+</hibernate-mapping>

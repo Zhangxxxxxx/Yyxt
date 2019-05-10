@@ -106,5 +106,9 @@
 				<param name="actionName">cptRoomAction_cptroomlist.action</param>
 			</result>
 		</action>
+		
+		<action name="roleAction_*" class="roleAction" method="{1}">
+			<result name="rolelist">WEB-INF/views/role/rolelist.jsp</result>
+		</action>
 	</package>
 </struts>

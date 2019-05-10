@@ -38,4 +38,8 @@
 	<bean id="cptRoomAction" class="ssh.web.action.CptRoomAction" scope="prototype">
 		<property name="cptRoomService" ref="cptRoomService"></property>
 	</bean>
+	<bean id="roleAction" class="ssh.web.action.RoleAction" scope="prototype">
+		<property name="roleService" ref="roleService"></property>
+		<property name="emosWorkflowService" ref="emosWorkflowService"></property>
+	</bean>
 </beans>

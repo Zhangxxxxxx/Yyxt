@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="ssh.domain">
+<class name="Role" table="taw_system_role">
+	<id name="role_id" type="string" column="role_id">
+	</id>
+	<property name="deleted" type="string" column="deleted"/>
+	<property name="dept_id"  type="string" column="dept_id"/>
+	<property name="level_id" type="string" column="level_id"/>
+	<property name="limit_count" type="string" column="limit_count"/>
+	<property name="notes" type="string" column="notes"/>
+	<property name="parent_id" type="string" column="parent_id"/>
+	<property name="role_name" type="string" column="role_name"/>
+	<property name="roletype_id" type="string" column="roletype_id"/>
+	<property name="single_id" type="string" column="single_id"/>
+	<property name="structure_flag" type="string" column="structure_flag"/>
+	<property name="title_id" type="string" column="title_id"/>
+	<property name="workflow_flag" type="string" column="workflow_flag"/>
+	<property name="leaf" type="string" column="leaf"/>
+	<property name="postid" type="string" column="postid"/>
+</class>
+</hibernate-mapping>

@@ -42,4 +42,10 @@
 	<bean id="cptRoomService" class="ssh.service.impl.CptRoomServiceImpl">
 		<property name="cptRoomDao" ref="cptRoomDao"></property>
 	</bean>
+	<bean id="roleService" class="ssh.service.impl.RoleServiceImpl">
+		<property name="roleDao" ref="roleDao"></property>
+	</bean>
+	<bean id="emosWorkflowService" class="ssh.service.impl.EmosWorkflowServiceImpl">
+		<property name="emosWorkFlowDao" ref="emosWorkFlowDao"></property>
+	</bean>
 </beans>

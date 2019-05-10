@@ -54,7 +54,7 @@
                 text:'组织管理',
                 items:[
                   {id:'employee',text:'员工管理',href:'emosUserAction_employeelist.action'},
-                  {id:'role',text:'角色管理',href:'emosUserAction_userlist.action'},
+                  {id:'role',text:'角色管理',href:'roleAction_rolelist.action'},
                   {id:'department',text:'部门管理', href:'departmentAction_departmentlist.action'},
                   {id:'local',text:'地域管理', href:'areaAction_arealist.action'},
                   {id:'dictionary',text:'字典管理', href:'dicttypeAction_dictlist.action'},

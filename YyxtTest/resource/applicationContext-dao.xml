@@ -32,4 +32,10 @@
 	
 	<bean id="cptRoomDao" class="ssh.dao.impl.CptRoomDaoImpl" parent="baseDao">
 	</bean>
+	
+	<bean id="roleDao" class="ssh.dao.impl.RoleDaoImpl" parent="baseDao">
+	</bean>
+	
+	<bean id="emosWorkFlowDao" class="ssh.dao.impl.EmosWorkFlowDaoImpl" parent="baseDao">
+	</bean>
 </beans>
