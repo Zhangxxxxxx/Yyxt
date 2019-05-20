@@ -10,5 +10,7 @@ import ssh.domain.Role;
 public interface IRoleService {
 	
 	List<Role> findRoleNamelist();
+	
+	List<Role> findRoleSyssublist();
 
 }

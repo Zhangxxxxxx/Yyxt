@@ -28,6 +28,8 @@
 	<bean id="emosUserAction" class="ssh.web.action.EmosUserAction" scope="prototype">
 		<property name="departmentService" ref="departmentService"></property>
 		<property name="emosUserService" ref="emosUserService"></property>
+		<property name="roleService" ref="roleService"></property>
+		<property name="emosWorkflowService" ref="emosWorkflowService"></property>
 	</bean>
 	<bean id="areaAction" class="ssh.web.action.AreaAction" scope="prototype">
 		<property name="areaService" ref="areaService"></property>

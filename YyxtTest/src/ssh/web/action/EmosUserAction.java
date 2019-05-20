@@ -2,9 +2,13 @@ package ssh.web.action;
 
 import ssh.domain.Department;
 import ssh.domain.EmosUser;
+import ssh.domain.EmosWorkFlow;
 import ssh.domain.JsonDepartment;
+import ssh.domain.Role;
 import ssh.service.IDepartmentService;
 import ssh.service.IEmosUserService;
+import ssh.service.IEmosWorkflowService;
+import ssh.service.IRoleService;
 import ssh.utils.SessionContext;
 import ssh.utils.ValueContext;
 
@@ -40,6 +44,8 @@ public class EmosUserAction extends ActionSupport implements ModelDriven<EmosUse
 
 	private IDepartmentService departmentService;
 	private IEmosUserService emosUserService;
+	private IRoleService roleService;
+	private IEmosWorkflowService emosWorkflowService;
 
 	public void setDepartmentService(IDepartmentService departmentService) {
 		this.departmentService = departmentService;
@@ -47,6 +53,14 @@ public class EmosUserAction extends ActionSupport implements ModelDriven<EmosUse
 
 	public void setEmosUserService(IEmosUserService emosUserService) {
 		this.emosUserService = emosUserService;
+	}
+	
+	public void setRoleService(IRoleService roleService) {
+		this.roleService = roleService;
+	}
+	
+	public void setEmosWorkflowService(IEmosWorkflowService emosWorkflowService) {
+		this.emosWorkflowService = emosWorkflowService;
 	}
 
 	/**
@@ -279,6 +293,38 @@ public class EmosUserAction extends ActionSupport implements ModelDriven<EmosUse
 		System.out.println("员工信息更新" + registerconditon);
 		
 		return "updatedeporuser";
+	}
+	
+	public void subrole() throws IOException {
+
+		List<Role> rolelist = roleService.findRoleSyssublist();
+		// 返回一个JSONArray对象
+		List<JsonDepartment> areas = new ArrayList<>();
+		// 添加部门
+		for (int i = 0; i < rolelist.size(); i++) {
+			JsonDepartment jsonDepartment = new JsonDepartment();
+			jsonDepartment.setId(rolelist.get(i).getRole_id());
+			jsonDepartment.setpId(rolelist.get(i).getParent_id());
+			jsonDepartment.setName(rolelist.get(i).getRole_name());
+			areas.add(jsonDepartment);
+		}
+		
+		JsonDepartment jsonDepartment = new JsonDepartment();
+		jsonDepartment.setId("0");
+		jsonDepartment.setpId("0000");
+		jsonDepartment.setName("系统角色");
+		areas.add(jsonDepartment);
+
+		ServletActionContext.getResponse().setCharacterEncoding("utf-8");
+		ServletActionContext.getResponse().setContentType("text/html; charset=utf-8");
+
+		String userStr = JSON.toJSONString(areas);// 使用fastjson将数据转换成json格式
+		PrintWriter writer = ServletActionContext.getResponse().getWriter();
+
+		writer.write(userStr);
+		System.out.println(userStr);
+		writer.flush();
+		writer.close();
 	}
 	
 

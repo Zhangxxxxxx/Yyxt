@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>角色管理</title>
+<title>员工管理</title>
 <%@ include file="/js/commons.jspf"%>
 
 <link type="text/css" rel="stylesheet"
@@ -48,6 +48,28 @@
 			onClick : zTreeOnClick
 		}
 	};
+	var setting2 = {
+			view : {
+				selectedMulti : false
+			},
+			check: {
+				enable: true
+			},
+			edit : {
+				enable : true,
+				showRemoveBtn : false,
+				showRenameBtn : false
+			},
+			data : {
+				keep : {
+					parent : true,
+					leaf : true
+				},
+				simpleData : {
+					enable : true
+				}
+			}
+		};
 	//2.提供ztree树形菜单数据
 	var zTree;
 	$(document).ready(function() {
@@ -94,13 +116,13 @@
 			
 			if(mark==1){	
 				var datanamelist =
-					"<li data-toggle='modal' data-target='#exampleModal2' onclick='deletedept(this)'><a><i class='fa fa-trash'></i>&nbsp;删除</a></li>"+
-					"<li class='divider'></li>"+
 					"<li data-toggle='modal' data-target='#exampleModal3' onclick='addemploy(this)'><a><i class='fa fa-plus'></i>&nbsp;添加子人员 </a></li>"	
 				$(".dropdown-menu").html(datanamelist); 				
 			}else {
 				var datanamelist =
 					"<li data-toggle='modal' data-target='#exampleModal1' onclick='editer(this)'><a id='editerdep'><i class='fa fa-edit'></i>&nbsp;编辑</a></li>"+
+					"<li class='divider'></li>"+
+					"<li data-toggle='modal' data-target='#exampleModal4' ><a><i class='fa fa-edit'></i>&nbsp;调整子角色</a></li>"+
 					"<li class='divider'></li>"+
 					"<li data-toggle='modal' data-target='#exampleModal2' onclick='deletedept(this)'><a><i class='fa fa-trash'></i>&nbsp;删除</a></li>"
 
@@ -210,6 +232,24 @@
 			form.submit();
 			return true;
 		}
+	}
+	
+	function subrole(o) {
+		$.ajax({
+			
+			type:"post",
+			url:"emosUserAction_subrole.action",//需要用来处理ajax请求的action,excuteAjax为处理的方法名，JsonAction为action名
+			data:{},
+			dataType:"json",//设置需要返回的数据类型
+			success:function(data){
+				
+				var zNodes = data;
+				$.fn.zTree.init($("#treeDemo2"), setting2, zNodes); //加载数据
+			},
+			 error:function(){
+			 alert("系统异常，请稍后重试！");
+			 }//这里不要加","
+			});
 	}
 	
 </script>
@@ -472,6 +512,60 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		</div>
+		
+		<!-- 修改子角色的模态框（Modal） -->
+		<div>
+		<div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">调整人员所属子角色</h4>
+					</div>
+					<div class="modal-body">
+						<button type="button" data-toggle='modal' data-target='#exampleModal5' class="btn btn-default" data-dismiss="modal" onclick='subrole(this)'>选择子角色</button>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+						<button type="button" class="btn btn-primary"
+							>保存</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
+		</div>
+		</div>
+		
+		<!-- 选择子角色的模态框（Modal） -->
+		<div>
+		<div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">请选子角色</h4>
+					</div>
+					<div class="modal-body">
+						<div id="treeDemo2" class="ztree"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+						</button>
+						<button type="button" class="btn btn-primary"
+							>确定</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal -->
 		</div>
 		</div>
 		

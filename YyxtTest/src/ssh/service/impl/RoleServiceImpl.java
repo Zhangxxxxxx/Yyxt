@@ -26,6 +26,13 @@ public class RoleServiceImpl implements IRoleService{
 		return rolelist;
 	}
 
+	@Override
+	public List<Role> findRoleSyssublist() {
+		// TODO Auto-generated method stub
+		List<Role> rolelist = roleDao.syssubrole();
+		return rolelist;
+	}
+
 
 	
 

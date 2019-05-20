@@ -30,6 +30,16 @@ public class RoleDaoImpl extends HibernateDaoSupport implements IRoleDao{
 		return rolelist;
 	}
 
+	@Override
+	public List<Role> syssubrole() {
+		// TODO Auto-generated method stub
+		String hql = "from Role role where role.workflow_flag='0'";
+		
+		List<Role> rolelist = this.getHibernateTemplate().find(hql);
+						
+		return rolelist;
+	}
+
 	
 
 }

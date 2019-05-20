@@ -11,4 +11,6 @@ import ssh.domain.Role;
 public interface IRoleDao {
 
 	List<Role> allrole();
+
+	List<Role> syssubrole();
 }

@@ -31,9 +31,6 @@ public class EmosWorkFlowDaoImpl extends HibernateDaoSupport implements IEmosWor
 						
 		return emosWorkFlowslist;
 	}
-
-	
-
 	
 
 }

@@ -248,7 +248,7 @@
 											name="dictname" value="" class=" x-form-text x-form-field "
 											placeholder="名称不能为空" style="width: 150px;">
 									</div>
-								</div>
+								</div> 
 								<div class="x-form-clear-left"></div>
 								<div class="x-form-item ">
 									<label for="ext-comp-1007" style="width: auto;">字典类型值:</label>
@@ -277,7 +277,7 @@
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 						<button type="button" class="btn btn-primary"
 							onclick="saveediter_area(this)">确认修改</button>
-					</div>
+					</div>5
 				</div>
 			</div>
 		</div>
@@ -352,7 +352,7 @@
 		<!-- 删除字典模态框（Modal） -->
 		<div>
 			<div class="modal fade" id="exampleModal3" tabindex="-1"
-				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
