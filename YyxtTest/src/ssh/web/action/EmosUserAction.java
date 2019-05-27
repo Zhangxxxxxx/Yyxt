@@ -5,10 +5,12 @@ import ssh.domain.EmosUser;
 import ssh.domain.EmosWorkFlow;
 import ssh.domain.JsonDepartment;
 import ssh.domain.Role;
+import ssh.domain.SubRole;
 import ssh.service.IDepartmentService;
 import ssh.service.IEmosUserService;
 import ssh.service.IEmosWorkflowService;
 import ssh.service.IRoleService;
+import ssh.service.ISubRoleService;
 import ssh.utils.SessionContext;
 import ssh.utils.ValueContext;
 
@@ -46,6 +48,7 @@ public class EmosUserAction extends ActionSupport implements ModelDriven<EmosUse
 	private IEmosUserService emosUserService;
 	private IRoleService roleService;
 	private IEmosWorkflowService emosWorkflowService;
+	private ISubRoleService subRoleService;
 
 	public void setDepartmentService(IDepartmentService departmentService) {
 		this.departmentService = departmentService;
@@ -61,6 +64,10 @@ public class EmosUserAction extends ActionSupport implements ModelDriven<EmosUse
 	
 	public void setEmosWorkflowService(IEmosWorkflowService emosWorkflowService) {
 		this.emosWorkflowService = emosWorkflowService;
+	}
+	
+	public void setSubRoleService(ISubRoleService subRoleService) {
+		this.subRoleService = subRoleService;
 	}
 
 	/**
@@ -298,6 +305,7 @@ public class EmosUserAction extends ActionSupport implements ModelDriven<EmosUse
 	public void subrole() throws IOException {
 
 		List<Role> rolelist = roleService.findRoleSyssublist();
+		List<SubRole> subRolelist = subRoleService.findRoleNamelist();
 		// 返回一个JSONArray对象
 		List<JsonDepartment> areas = new ArrayList<>();
 		// 添加部门
@@ -306,6 +314,15 @@ public class EmosUserAction extends ActionSupport implements ModelDriven<EmosUse
 			jsonDepartment.setId(rolelist.get(i).getRole_id());
 			jsonDepartment.setpId(rolelist.get(i).getParent_id());
 			jsonDepartment.setName(rolelist.get(i).getRole_name());
+			areas.add(jsonDepartment);
+		}
+		
+		//取subrole查询出的集合最后7个
+		for (int j = subRolelist.size()-7; j < subRolelist.size(); j++) {
+			JsonDepartment jsonDepartment = new JsonDepartment();
+			jsonDepartment.setId(subRolelist.get(j).getDeptid());
+			jsonDepartment.setpId(subRolelist.get(j).getRoleid());
+			jsonDepartment.setName(subRolelist.get(j).getSubrolename());
 			areas.add(jsonDepartment);
 		}
 		

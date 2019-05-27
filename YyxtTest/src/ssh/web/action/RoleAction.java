@@ -5,9 +5,11 @@ import ssh.domain.Area;
 import ssh.domain.EmosWorkFlow;
 import ssh.domain.JsonDepartment;
 import ssh.domain.Role;
+import ssh.domain.SubRole;
 import ssh.service.IAreaService;
 import ssh.service.IEmosWorkflowService;
 import ssh.service.IRoleService;
+import ssh.service.ISubRoleService;
 import ssh.utils.SessionContext;
 import ssh.utils.ValueContext;
 
@@ -52,6 +54,8 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role> {
 		this.emosWorkflowService = emosWorkflowService;
 	}
 	
+	
+	
 	/**
 	 * 角色列表
 	 * 
@@ -61,6 +65,7 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role> {
 		
 		List<Role> rolelist = roleService.findRoleNamelist();
 		List<EmosWorkFlow> emosWorkFlowslist = emosWorkflowService.findWorkflowlist();
+	
 		// 返回一个JSONArray对象
 		List<JsonDepartment> areas = new ArrayList<>();
 		// 添加部门
@@ -79,6 +84,8 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role> {
 			jsonDepartment.setName(emosWorkFlowslist.get(i).getRemark());
 			areas.add(jsonDepartment);
 		}
+		
+	
 		
 		JsonDepartment jsonDepartment = new JsonDepartment();
 		jsonDepartment.setId("0");

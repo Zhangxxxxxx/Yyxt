@@ -78,7 +78,6 @@
 		var zNodes = json;
 		//alert(zNodes)
 		$.fn.zTree.init($("#treeDemo"), setting, zNodes); //加载数据
-
 	});
 
 	// 单击事件
@@ -243,8 +242,9 @@
 			dataType:"json",//设置需要返回的数据类型
 			success:function(data){
 				
-				var zNodes = data;
+				var zNodes = data;				
 				$.fn.zTree.init($("#treeDemo2"), setting2, zNodes); //加载数据
+				$(".ztree>li>span.chk").hide();//隐藏root节点选择框
 			},
 			 error:function(){
 			 alert("系统异常，请稍后重试！");

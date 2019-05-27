@@ -38,4 +38,7 @@
 	
 	<bean id="emosWorkFlowDao" class="ssh.dao.impl.EmosWorkFlowDaoImpl" parent="baseDao">
 	</bean>
+	
+	<bean id="subRoleDao" class="ssh.dao.impl.SubRoleDaoImpl" parent="baseDao">
+	</bean>
 </beans>
