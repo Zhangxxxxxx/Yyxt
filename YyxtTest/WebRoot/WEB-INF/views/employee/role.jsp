@@ -45,7 +45,8 @@
 			}
 		},
 		callback : {
-			onClick : zTreeOnClick
+			//onClick : zTreeOnClick
+			onRightClick: zTreeOnClick
 		}
 	};
 	var setting2 = {
@@ -90,18 +91,17 @@
 			zTree.selectNode(treeNode);
 			//alert(treeNode.name);
 			//showContextMenu(treeNode.organId, treeNode.leaf);
-			reg=/^[-+]?\d*$/;　　//整数
+			var st = $(document).scrollTop();//滚动条的高度
+			//reg=/^[-+]?\d*$/;　　//整数
 			 if(treeid.length!=0){    
 			        reg=/^[-+]?\d*$/;     
 			        if(!reg.test(treeid)){   
-			        	showContextMenu(2,treeNode.organId, treeNode.leaf,event.clientX - 40, event.clientY - 10); 
+			        	showContextMenu(2,treeNode.organId, treeNode.leaf,event.clientX + 40, event.clientY - 10+st); 
 			        } else {
 			        	showContextMenu(1,treeNode.organId, treeNode.leaf,
-								event.clientX + 40, event.clientY - 10);
+								event.clientX + 40, event.clientY - 10+st);
 					}   
 			  }  
-			
-			
 		}
 	}
 	

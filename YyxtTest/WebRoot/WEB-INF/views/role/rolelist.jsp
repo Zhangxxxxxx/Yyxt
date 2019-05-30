@@ -43,7 +43,11 @@
 			simpleData : {
 				enable : true
 			}
+		},
+		callback : {
+			onRightClick : zTreeOnClick// zTree 上鼠标右键点击之后的事件回调函数
 		}
+		
 	};
 	//2.提供ztree树形菜单数据
 	var zTree;
@@ -55,7 +59,81 @@
 
 	});
 
+	// 单击事件
+	function zTreeOnClick(event, treeId, treeNode) {
+		var treeid = treeNode.id ;
+		if (treeid == "-1") {
+			return;
+		} else {
+			zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			zTree.selectNode(treeNode);
+			//alert(treeNode.name);
+			//showContextMenu(treeNode.organId, treeNode.leaf);
+			var st = $(document).scrollTop();//滚动条的高度
+			reg=/^[-+]?\d*$/;　　//整数
+			 if(treeid.length!=0){    
+			        reg=/^[-+]?\d*$/;     
+			        if(!reg.test(treeid)){   
+			        	showContextMenu(2,treeNode.organId, treeNode.leaf,event.clientX + 40, event.clientY - 10+st); 
+			        } else {
+			        	showContextMenu(1,treeNode.organId, treeNode.leaf,
+								event.clientX + 40, event.clientY - 10+st);
+					}   
+			  }  
+		}
+	}
 	
+	function showContextMenu(mark,type, leaf, x, y) {
+		if (type == -1) {
+			$(".dropdown-menu").find("li:not(:first)").hide();
+		} else if (leaf) {
+			$(".dropdown-menu").find("li:first").hide();
+		} else {
+			$(".dropdown-menu").find("li").show();
+			
+			if(mark==1){	
+				var datanamelist =
+					"<li data-toggle='modal' data-target='#exampleModal3' onclick='addemploy(this)'><a><i class='fa fa-plus'></i>&nbsp;新建角色 </a></li>"+
+					"<li class='divider'></li>"+
+					"<li data-toggle='modal' data-target='#exampleModal1' onclick='editer(this)'><a id='editerdep'><i class='fa fa-edit'></i>&nbsp;编辑</a></li>"+
+					"<li class='divider'></li>"+
+					"<li data-toggle='modal' data-target='#exampleModal4' ><a><i class='fa fa-edit'></i>&nbsp;调整子角色</a></li>"+
+					"<li class='divider'></li>"+
+					"<li data-toggle='modal' data-target='#exampleModal2' onclick='deletedept(this)'><a><i class='fa fa-trash'></i>&nbsp;删除</a></li>"+
+					"<li class='divider'></li>"+
+					"<li data-toggle='modal' data-target='#exampleModal2' onclick='deletedept(this)'><a><i class='fa fa-trash'></i>&nbsp;新建子角色</a></li>"
+				$(".dropdown-menu").html(datanamelist); 				
+			}else {
+				var datanamelist =
+					"<li data-toggle='modal' data-target='#exampleModal1' onclick='editer(this)'><a id='editerdep'><i class='fa fa-edit'></i>&nbsp;编辑</a></li>"+
+					"<li class='divider'></li>"+
+					"<li data-toggle='modal' data-target='#exampleModal4' ><a><i class='fa fa-edit'></i>&nbsp;调整子角色</a></li>"+
+					"<li class='divider'></li>"+
+					"<li data-toggle='modal' data-target='#exampleModal2' onclick='deletedept(this)'><a><i class='fa fa-trash'></i>&nbsp;删除</a></li>"
+
+				$(".dropdown-menu").html(datanamelist); 
+			}
+		}
+		
+		$("#treeContextMenu").css({
+			"top" : y + "px",
+			"left" : x + "px"
+		}).show();
+		$("body").on("mousedown", onBodyMouseDown);
+	}
+
+	function hideContextMenu() {
+		$("#treeContextMenu").hide();
+		$("body").off("mousedown", onBodyMouseDown);
+	}
+
+	function onBodyMouseDown(event) {
+		if (!(event.target.id == "treeContextMenu" || $(event.target).parents(
+				"#treeContextMenu").length > 0)) {
+			hideContextMenu();
+		}
+	}
+
 </script>
 </head>
 <body>
@@ -66,12 +144,12 @@
 				value="<s:property value="rolelist"/>" />
 			<div id="treeDemo" class="ztree"></div>
 
-			<!-- <div class="dropdown open" id="treeContextMenu"
+			<div class="dropdown open" id="treeContextMenu"
 				style="display: none; position: absolute">
 				<ul class="dropdown-menu">
 
 				</ul>
-			</div> -->
+			</div>
 
 		</div>
 

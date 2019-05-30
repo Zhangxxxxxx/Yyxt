@@ -45,7 +45,8 @@
 			}
 		},
 		callback : {
-			onClick : zTreeOnClick
+			//onClick : zTreeOnClick
+			onRightClick: zTreeOnClick
 		}
 	};
 	//2.提供ztree树形菜单数据
